@@ -1,5 +1,11 @@
+@import "fonts.css";
+
+body{
+    font-family: "Roboto", sans-serif;
+}
+
 #counter{
-    background: red;
+    background: green;
     padding: 10px 50px;
     display: inline;
 }

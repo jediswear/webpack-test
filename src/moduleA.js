@@ -1,5 +1,5 @@
 function printCounter (htmlElem) {
-  let counter = 0;
+  let counter = 5;
 
   setInterval(() => {
     htmlElem.textContent = counter++;

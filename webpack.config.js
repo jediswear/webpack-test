@@ -10,6 +10,9 @@ module.exports = {
     filename: "bundle.[contenthash].js",
     path: path.resolve(__dirname, "build")
   },
+  devServer: {
+    port: 3000
+  },
   plugins: [
     new HTMLWebpackPlugin({
       template: "./index.html"
@@ -21,6 +24,14 @@ module.exports = {
       {
         test: /\.css$/,
         use: ["style-loader","css-loader"]
+      },
+      {
+        test: /\.(png|jpg|svg|gif)$/,
+        use: ["file-loader"]
+      },
+      {
+        test: /\.(ttf|woff|eot)$/,
+        use: ["file-loader"]
       }
     ]
   }
