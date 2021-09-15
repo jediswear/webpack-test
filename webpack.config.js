@@ -7,7 +7,7 @@ module.exports = {
   mode: "production",
   entry: "./index.js",
   output: {
-    filename: "bundle.[contenthash].js",
+    filename: ["@babel/polyfill", "bundle.[contenthash].js"],
     path: path.resolve(__dirname, "build")
   },
   devServer: {
@@ -19,11 +19,11 @@ module.exports = {
     }),
     new CleanWebpackPlugin()
   ],
-  module:{
+  module: {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader","css-loader"]
+        use: ["style-loader", "css-loader"]
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
@@ -32,6 +32,13 @@ module.exports = {
       {
         test: /\.(ttf|woff|eot)$/,
         use: ["file-loader"]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: {
+          loader: ["babel-loader", "eslint-loader"]
+        }
       }
     ]
   }
